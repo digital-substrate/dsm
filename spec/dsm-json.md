@@ -10,18 +10,13 @@ generators, schema validators, dashboards, etc.
 
 This document is the contract. A conformant document is one that this
 spec accepts and a conformant decoder is one that this spec describes.
-Round-trip and cross-codec tests on the producer side validate that
-the JSON it emits round-trips through the binary form without loss; if
-this document and producer behaviour disagree, the producer wins and
-this document gets fixed.
+A producer or consumer is free to be implemented in any language under
+any license, against this spec alone — no need to read any particular
+implementation's source.
 
-A reference consumer ships in the
-[kibo](https://github.com/digital-substrate/kibo) repo:
-`src/main/java/com/digitalsubstrate/viper/dsm/DSMDefinitionsJsonDecoder.java`
-— a tree-model Jackson decoder that tracks the JSON path on every
-error. The key-name constants it uses are mirrored in
-`DSMDefinitionsJsonLexicon.java`. Anyone implementing a decoder in
-another language can use these as a working blueprint.
+[kibo](https://github.com/digital-substrate/kibo) implements the
+consumer side of this spec in Java. Its source can be read as a
+working example, but the spec — not kibo — is the authority.
 
 
 ## Conformance
@@ -507,20 +502,71 @@ A concept-only document, well-formed and decodable:
 ```
 
 
+## Appendix A — Lexicon (canonical key names)
+
+The complete set of identifiers that may appear in a conforming
+document. All keys are case-sensitive, ASCII, snake_case. A
+conformant producer **MUST** emit exactly these strings; a conformant
+consumer **MUST** reject any other string in the corresponding
+position.
+
+### Top-level array names
+
+`concepts`, `clubs`, `enumerations`, `structures`, `attachments`,
+`function_pools`, `attachment_function_pools`.
+
+### Common identity / metadata
+
+`namespace_uuid`, `namespace_name`, `name`, `runtime_id`, `uuid`
+(used in place of `runtime_id` for function-pool entries),
+`documentation`, `parent`.
+
+### Polymorphism discriminators
+
+`class_name`, `domain`.
+
+### Type-shape members
+
+`type`, `key_type`, `document_type`, `element_type`, `types`,
+`fields`, `members`, `default_value`, `value`, `size`, `columns`,
+`rows`.
+
+### Function-pool members
+
+`prototype`, `parameters`, `return_type`, `is_mutable`, `functions`.
+
+### Discriminator values for `class_name` (Type)
+
+`reference`, `vec`, `mat`, `tuple`, `optional`, `vector`, `set`,
+`map`, `xarray`, `variant`, `key`.
+
+### Discriminator values for `class_name` (Literal)
+
+`literal_value`, `literal_list`.
+
+### Discriminator values for `domain` (TypeReference)
+
+`any`, `primitive`, `concept`, `club`, `any_concept`, `enumeration`,
+`structure`.
+
+### Discriminator values for `domain` (LiteralValue)
+
+`none`, `boolean`, `integer`, `float`, `double`, `string`, `uuid`,
+`enumeration_case`.
+
+### Primitive type names (used as `name` when `domain` is `primitive`)
+
+`void`, `bool`, `uint8`, `uint16`, `uint32`, `uint64`, `int8`,
+`int16`, `int32`, `int64`, `float`, `double`, `string`, `uuid`,
+`blob`, `blob_id`, `commit_id`.
+
+
 ## See also
 
-In the [kibo](https://github.com/digital-substrate/kibo) repo, under
-`src/main/java/com/digitalsubstrate/viper/dsm/`:
-
-- `DSMDefinitionsJsonLexicon.java` — the key-name constants used
-  throughout this spec.
-- `DSMDefinitionsJsonDecoder.java` — a reference consumer with full
-  path-tracking error reporting.
-- `DSMDefinitionsJsonDecodingException.java` — the four error
-  categories (`expected_type`, `expected_member`, `expected_member_type`,
-  `unknown_value`) as factory methods.
-
-Adjacent in this repo:
-
 - [`grammar/DSM.g4`](../grammar/DSM.g4) — the source-language grammar
-  that feeds the producer.
+  in this repo. Together with this document, it defines DSM end to
+  end: how to parse `.dsm` source, and what the parsed model looks
+  like once serialized.
+- [kibo](https://github.com/digital-substrate/kibo) — a Java
+  implementation of the consumer side. Useful as a working example
+  for anyone porting the consumer to another language.

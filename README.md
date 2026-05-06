@@ -35,17 +35,20 @@ MIT-licensed artefacts:
 ## Producers and consumers
 
 A **producer** is anything that emits a JSON document conforming to
-`spec/dsm-json.md`. The reference producer is
-[viper](https://digitalsubstrate.io/), which parses `.dsm` source via
-this grammar and emits the JSON form directly.
+`spec/dsm-json.md`. A producer typically parses `.dsm` source against
+`grammar/DSM.g4` and serializes the resulting model.
+[viper](https://digitalsubstrate.io/) is one such producer.
 
 A **consumer** is anything that reads a JSON document conforming to
-`spec/dsm-json.md` and does something with it — typically code
-generation, validation, or visualization. The reference consumer is
-[kibo](https://github.com/digital-substrate/kibo), a StringTemplate-
-driven code generator.
+`spec/dsm-json.md` and does something with it — code generation,
+validation, visualization, etc.
+[kibo](https://github.com/digital-substrate/kibo) is one such
+consumer: a StringTemplate-driven code generator that implements this
+spec in Java.
 
-Anyone can write either side. The spec is the contract.
+Either side can be reimplemented in any language under any license
+against this spec alone. The spec — not any particular implementation
+— is the authority.
 
 ## Versioning
 
