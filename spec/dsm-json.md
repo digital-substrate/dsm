@@ -3,16 +3,17 @@
 This document specifies the JSON encoding of a `DSMDefinitions` — the
 data model that describes a Domain Substrate Model (concepts, clubs,
 enumerations, structures, attachments, function pools, and the type
-system that binds them together). It is the contract between viper
-(the canonical producer) and any consumer that wants to read DSM data
-without going through the binary `.dsmb` format: kibo, third-party code
-generators, schema validators, dashboards, etc.
+system that binds them together). It is a producer-neutral wire format
+suitable for code generators (e.g. kibo), schema validators, dashboards
+and visualizers, and **interactive editors** that load, mutate, and
+save DSM models. The format is intentionally round-trip stable so that
+read-modify-write tools see no field drift.
 
 This document is the contract. A conformant document is one that this
 spec accepts and a conformant decoder is one that this spec describes.
-A producer or consumer is free to be implemented in any language under
-any license, against this spec alone — no need to read any particular
-implementation's source.
+A producer, a consumer, or an editor (which acts as both) is free to
+be implemented in any language under any license, against this spec
+alone — no need to read any particular implementation's source.
 
 [kibo](https://github.com/digital-substrate/kibo) implements the
 consumer side of this spec in Java. Its source can be read as a

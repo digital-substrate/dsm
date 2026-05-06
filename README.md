@@ -32,23 +32,27 @@ MIT-licensed artefacts:
 - joins the existing open-DSM family of repos (`dsm-jetbrains`,
   `dsm-vscode`, `dsm-samples`).
 
-## Producers and consumers
+## Producers, consumers, and editors
 
-A **producer** is anything that emits a JSON document conforming to
-`spec/dsm-json.md`. A producer typically parses `.dsm` source against
+A **producer** emits a JSON document conforming to
+`spec/dsm-json.md`. It typically parses `.dsm` source against
 `grammar/DSM.g4` and serializes the resulting model.
 [viper](https://digitalsubstrate.io/) is one such producer.
 
-A **consumer** is anything that reads a JSON document conforming to
-`spec/dsm-json.md` and does something with it — code generation,
-validation, visualization, etc.
+A **consumer** reads a JSON document and does something with it —
+code generation, validation, visualization, …
 [kibo](https://github.com/digital-substrate/kibo) is one such
-consumer: a StringTemplate-driven code generator that implements this
-spec in Java.
+consumer: a StringTemplate-driven code generator that implements
+this spec in Java.
 
-Either side can be reimplemented in any language under any license
-against this spec alone. The spec — not any particular implementation
-— is the authority.
+An **editor** is both at once: it reads DSM, mutates it
+interactively, and writes it back. Web tooling for editing DSM
+models has historically been a real consumer of this format, and the
+JSON shape is intentionally round-trip stable so this stays viable.
+
+Any of the three roles can be reimplemented in any language under
+any license against this spec alone. The spec — not any particular
+implementation — is the authority.
 
 ## Versioning
 
