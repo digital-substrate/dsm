@@ -1,13 +1,23 @@
-# DSM JSON Schema
+# DSM Definitions — JSON Wire Format
 
-This document specifies the JSON encoding of a `DSMDefinitions` — the
-data model that describes a Domain Substrate Model (concepts, clubs,
-enumerations, structures, attachments, function pools, and the type
-system that binds them together). It is a producer-neutral wire format
-suitable for code generators (e.g. kibo), schema validators, dashboards
-and visualizers, and **interactive editors** that load, mutate, and
-save DSM models. The format is intentionally round-trip stable so that
-read-modify-write tools see no field drift.
+This document specifies the **JSON wire format** for a `DSMDefinitions`
+— the data model that results from parsing one or more `.dsm` source
+files. It is the on-the-wire / on-disk encoding that producers emit
+and consumers read.
+
+> **What this is not.** This is **not** a [JSON
+> Schema](https://json-schema.org/) document — it is a prose
+> specification of the structure of conforming JSON documents. It is
+> also **not** a JSON form of the surface grammar; the grammar lives
+> in [`grammar/DSM.g4`](../grammar/DSM.g4) and describes how to parse
+> `.dsm` source. This document describes what the parsed model looks
+> like once serialized.
+
+The format is producer-neutral and suitable for code generators
+(e.g. kibo), schema validators, dashboards and visualizers, and
+**interactive editors** that load, mutate, and save DSM models. It is
+intentionally round-trip stable so that read-modify-write tools see
+no field drift.
 
 This document is the contract. A conformant document is one that this
 spec accepts and a conformant decoder is one that this spec describes.
