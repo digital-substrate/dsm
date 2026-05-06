@@ -15,7 +15,8 @@ the JSON it emits round-trips through the binary form without loss; if
 this document and producer behaviour disagree, the producer wins and
 this document gets fixed.
 
-A reference consumer ships in this repo:
+A reference consumer ships in the
+[kibo](https://github.com/digital-substrate/kibo) repo:
 `src/main/java/com/digitalsubstrate/viper/dsm/DSMDefinitionsJsonDecoder.java`
 — a tree-model Jackson decoder that tracks the JSON path on every
 error. The key-name constants it uses are mirrored in
@@ -508,10 +509,18 @@ A concept-only document, well-formed and decodable:
 
 ## See also
 
-- `src/main/java/com/digitalsubstrate/viper/dsm/DSMDefinitionsJsonLexicon.java`
-  — the key-name constants used throughout this spec.
-- `src/main/java/com/digitalsubstrate/viper/dsm/DSMDefinitionsJsonDecoder.java`
-  — a reference consumer with full path-tracking error reporting.
-- `src/main/java/com/digitalsubstrate/viper/dsm/DSMDefinitionsJsonDecodingException.java`
-  — the four error categories (`expected_type`, `expected_member`,
-  `expected_member_type`, `unknown_value`) as factory methods.
+In the [kibo](https://github.com/digital-substrate/kibo) repo, under
+`src/main/java/com/digitalsubstrate/viper/dsm/`:
+
+- `DSMDefinitionsJsonLexicon.java` — the key-name constants used
+  throughout this spec.
+- `DSMDefinitionsJsonDecoder.java` — a reference consumer with full
+  path-tracking error reporting.
+- `DSMDefinitionsJsonDecodingException.java` — the four error
+  categories (`expected_type`, `expected_member`, `expected_member_type`,
+  `unknown_value`) as factory methods.
+
+Adjacent in this repo:
+
+- [`grammar/DSM.g4`](../grammar/DSM.g4) — the source-language grammar
+  that feeds the producer.
