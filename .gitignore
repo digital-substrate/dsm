@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.idea/
+*.iml
+.vscode/
+
+# Claude Code
+CLAUDE.md
+.claude/
+
+# ANTLR-generated artefacts (kept inside their consuming runtimes)
+*.tokens
+*.interp
+gen/
