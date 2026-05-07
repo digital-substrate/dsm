@@ -43,7 +43,6 @@ MIT-licensed artefacts:
 A **producer** emits a JSON document conforming to
 `spec/dsm-json.md`. It typically parses `.dsm` source against
 `grammar/DSM.g4` and serializes the resulting model.
-[viper](https://digitalsubstrate.io/) is one such producer.
 
 A **consumer** reads a JSON document and does something with it —
 code generation, validation, visualization, …
