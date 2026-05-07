@@ -17,6 +17,12 @@ Together, `.g4` + `.dsm-json` describe DSM end to end: how to parse a
 for tools that don't want to depend on a particular parser
 implementation.
 
+## Documentation
+
+Full documentation: https://docs.digitalsubstrate.io/dsm/
+
+Part of the [DevKit ecosystem](https://docs.digitalsubstrate.io/).
+
 ## Why this repo exists
 
 Until now, the DSM language was defined implicitly by the encoder/
