@@ -36,7 +36,7 @@ MIT-licensed artefacts:
 - lets third-party tools (editors, validators, code generators,
   alternative runtimes) implement against a stable, public contract;
 - joins the existing open-DSM family of repos (`dsm-jetbrains`,
-  `dsm-vscode`, `dsm-samples`).
+  `dsm-vscode`, `dsm-samples`, `kibo`).
 
 ## Producers, consumers, and editors
 
