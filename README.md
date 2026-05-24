@@ -11,11 +11,15 @@ This repo is the **language-level contract**. It contains:
 - **`spec/dsm-json.md`** — the canonical JSON wire format for a
   `DSMDefinitions` (the parsed, validated model that downstream tools
   consume). Producer-neutral specification.
+- **`spec/viper-value-json.md`** — the companion JSON wire format for a
+  Viper *value*: how an instance of a DSM-defined type is serialized.
+  Type-driven, and dependent on the type model above.
 
-Together, `.g4` + `.dsm-json` describe DSM end to end: how to parse a
+Together, `.g4` + `dsm-json` describe DSM end to end: how to parse a
 `.dsm` source, and what the parsed model looks like once serialized
 for tools that don't want to depend on a particular parser
-implementation.
+implementation. `viper-value-json` completes the data plane: how
+*values* of those types are encoded.
 
 ## Documentation
 
