@@ -282,10 +282,19 @@ A `key` encodes as a JSON array of **exactly two** elements:
 | 0     | The keyed instance's UUID.                                          |
 | 1     | The runtime id of the target concept.                              |
 
-The concept runtime id is resolved against the definitions registry.
-When the key's element type is a **club**, the resolved concept **MUST**
-be a member of that club. When it is `any_concept`, any concept is
-accepted.
+The concept runtime id is resolved against the definitions registry; a
+runtime id that is present but **not** in the registry is rejected. An
+**invalid** (all-zero) concept runtime id denotes an unassigned **null
+key**, which is admissible for any element type.
+
+Otherwise the resolved concept **MUST** conform to the key's element
+type:
+
+- **concept** — the concept must be the element concept, or a descendant
+  of it;
+- **club** — the concept must be a member of the club, or a descendant of
+  a member;
+- **`any_concept`** — any concept known to the registry is accepted.
 
 ### Any
 
@@ -420,9 +429,9 @@ the wire contract.
 | `expected_member`            | A required object key is absent.                                    |
 | `expected_member_type`       | A required key is present but has the wrong JSON kind.              |
 | `malformed_enumeration_case` | An enumeration string does not split into exactly two `.` segments. |
-| `not_a_member_of_club`       | A `key`'s concept is not a member of the target club.               |
+| `not_a_club_member_descendant` | A `key`'s concept is neither a member of the target club nor a descendant of a member. |
 | `not_a_member_of_variant`    | An embedded type is not a member of the variant's type set.         |
-| `not_a_concept_child`        | A concept is not a child of the expected parent concept.            |
+| `not_a_concept_descendant`   | A `key`'s concept is neither the element concept nor a descendant of it. |
 
 Decoders additionally surface:
 
