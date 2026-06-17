@@ -9,6 +9,10 @@ DSM is a language-level contract — an ANTLR4 grammar plus two JSON wire
 formats. Changes to the grammar, or to a wire format, that affect what
 producers emit or what consumers must accept are tracked here.
 
+## [Unreleased]
+
+_No changes yet. Bug fixes for the next 1.2.x patch release will be listed here._
+
 ## [1.2.0] - 2026-06-17
 
 First standalone publication of the DSM language contract as MIT-licensed,
