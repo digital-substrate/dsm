@@ -126,10 +126,11 @@ of the supplied type.
 A value outside the target width is rejected.
 
 **`float` and `double`** encode as JSON numbers carrying a fraction or
-exponent. On decode the JSON node **MUST** be a JSON float: a bare
-integer literal such as `5` is **rejected** for a `float`/`double`
-field; write `5.0`. `float` is additionally range-checked to single
-precision.
+exponent (a whole value is written `5.0`, not `5`). On decode the JSON
+node must be a JSON number: a bare integer literal such as `5` is
+**accepted** and read as `5.0` (JSON has a single number type, so `5`
+and `5.0` denote the same value). A non-number is rejected. `float` is
+additionally range-checked to single precision.
 
 **`string`** encodes verbatim as a JSON string.
 
