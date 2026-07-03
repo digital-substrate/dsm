@@ -92,8 +92,8 @@ of the supplied type.
 | `bool`        | JSON boolean                                                            |
 | `uint8/16/32/64` | JSON number (unsigned)                                               |
 | `int8/16/32/64`  | JSON number (signed integer)                                        |
-| `float`       | JSON number (with fraction/exponent)                                    |
-| `double`      | JSON number (with fraction/exponent)                                    |
+| `float`       | JSON number                                                             |
+| `double`      | JSON number                                                             |
 | `string`      | JSON string                                                             |
 | `blob`        | JSON string (Base64)                                                    |
 | `uuid`        | JSON string (RFC 4122)                                                  |
