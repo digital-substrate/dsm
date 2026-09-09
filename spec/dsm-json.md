@@ -478,7 +478,7 @@ fields — forward compatibility is handled by versioning, not by leniency.
 
 ## Versioning
 
-The schema version is **paired with the viper release** that defines
+The schema version is **paired with the viper release** that implements
 it. There is no separate schema version number. A breaking schema
 change requires a major-version bump on viper, with the change
 documented in the release notes.

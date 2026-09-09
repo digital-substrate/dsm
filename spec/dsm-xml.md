@@ -333,7 +333,7 @@ silently coerce or skip unknown content.
 
 ## Versioning
 
-The schema version is **paired with the viper release** that defines it; there
+The schema version is **paired with the viper release** that implements it; there
 is no separate schema version number. A breaking change requires a major-version
 bump on viper, documented in the release notes. Consumers **MUST** reject
 unknown elements and attributes — this is what makes versioning safe and

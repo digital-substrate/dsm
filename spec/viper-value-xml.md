@@ -390,7 +390,7 @@ leniency (§Structure) is the one deliberate exception to strict rejection.
 
 ## Versioning
 
-The wire format is **paired with the viper release** that defines it; there is
+The wire format is **paired with the viper release** that implements it; there is
 no separate schema version number. A breaking change requires a major-version
 bump on viper, documented in the release notes. Forward compatibility for
 **structures** is handled by the leniency rule; outside structures, decoding

@@ -448,7 +448,7 @@ missing declared fields fall back to their default.
 
 ## Versioning
 
-The wire format is **paired with the viper release** that defines it.
+The wire format is **paired with the viper release** that implements it.
 There is no separate schema version number. A breaking change to the
 format requires a major-version bump on viper, documented in the release
 notes.
