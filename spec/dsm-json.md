@@ -471,6 +471,10 @@ the failing node by location (e.g. `clubs[2].runtime_id`,
 | `expected_member_type`| A key is present but its value has the wrong JSON kind.                    |
 | `unknown_value`       | A discriminator (`class_name`, `domain`) is not in the closed enumeration. |
 
+A document of the right shape still describes valid definitions only if
+it obeys `spec/dsm-governance.md` — names, uniqueness, documentation. A
+decoder that builds definitions **MUST** refuse one that does not.
+
 Decoders **SHOULD** include the JSON path of the offending node in the
 error message. They **MUST NOT** silently coerce or skip unknown
 fields — forward compatibility is handled by versioning, not by leniency.

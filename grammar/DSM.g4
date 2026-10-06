@@ -87,7 +87,7 @@ fragment LETTER: [a-zA-Z] ;
 
 CASE: '.' LETTER (LETTER | [0-9] | '_')* ;
 
-DOCSTR : '"""' (ESC | ~["\\])*? '"""' ;
+DOCSTR : '"""' .*? '"""' '"'* ;   // quotes after the delimiter end the text: """say "hi""""
 STRING : '"' (ESC | ~["\\])*? '"' ;
 fragment ESC : '\\' (["\\/bfnrt] | UNICODE) ;
 fragment UNICODE : 'u' HEX HEX HEX HEX ;

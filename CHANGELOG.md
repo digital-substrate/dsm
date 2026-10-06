@@ -11,7 +11,18 @@ producers emit or what consumers must accept are tracked here.
 
 ## [Unreleased]
 
-_No changes yet. Bug fixes for the next 1.2.x patch release will be listed here._
+### Added
+- `spec/dsm-governance.md` — which definitions are valid: the text form is a faithful
+  projection, identifiers are ASCII and not words of the DSM, a type is not named like a
+  built-in type, names are unique where they meet, documentation is UTF-8 without `"""`.
+  No rule depends on a programming language: a name a target language reserves is the code
+  generator's to handle.
+
+### Changed
+- `grammar/DSM.g4` follows the reference implementation's docstring: raw text, so a `"` or a
+  `\` needs no escape, and the quotes after the closing `"""` end the text — a
+  documentation may end with a quote (`"""say "hi""""`). The grammar this repository
+  published still escaped docstrings like string literals.
 
 ## [1.2.0] - 2026-06-17
 
