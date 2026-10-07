@@ -54,13 +54,15 @@ Held by `test_dsm_semantic_errors.TestSemanticCheckerNames` and
   them **MUST NOT** have the same name.
 - A namespace's name and its UUID go together: a namespace **MAY** be declared again with
   the same name and UUID, and **MUST NOT** with the same name and another UUID, nor the same
-  UUID and another name.
+  UUID and another name. A namespace's UUID **MUST NOT** be the nil UUID
+  `{00000000-0000-0000-0000-000000000000}`: it is the global namespace's, which holds no type.
 - The fields of a structure, the cases of an enumeration, the functions of a pool and the
   parameters of a function **MUST** have distinct names; two pools **MUST NOT** share a name.
 - Attachments have a space of their own: an attachment **MAY** bear a type's name.
 
 Held by `test_dsm_semantic_errors.TestSemanticCheckerAlreadyDefined`,
-`TestSemanticCheckerNames.test_a_namespace_reopened_under_another_uuid_names_both`, and
+`TestSemanticCheckerNames.test_a_namespace_reopened_under_another_uuid_names_both`,
+`TestSemanticCheckerNames.test_a_namespace_with_the_nil_uuid_is_reported`, and
 `test_definitions_dsm_governance_proof.TestConstructionShapeSoundness`.
 
 ## 5. An attachment is its key type and its name
