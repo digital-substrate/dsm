@@ -86,6 +86,27 @@ documentation (`"""say "hi""""` is `say "hi"`).
 Held by `test_definitions_dsm_governance_proof.TestConstructionDocumentationSoundness` and
 `test_dsm_builder.TestDSMBuilderParse.test_parse_docstring_with_literal_double_quotes`.
 
+## Known limitations
+
+These are accepted today and settled by the next major version. Definitions read from DSM text
+keep their identity through every round trip; where rule 1 does not hold, the definitions were
+built by an API.
+
+- **A float default is kept at fixed decimals.** A `float` or `double` default literal is kept
+  in fixed notation with 6 or 15 decimals: digits beyond are rounded, and a magnitude smaller
+  than the last decimal becomes zero (`1e-20` is kept as `0.000000000000000`). A default
+  built by an API with more precision than its literal keeps does not read back the same from
+  its text.
+- **A negative zero in a default.** `-0` and `0` are one value. A default equal to its type's
+  zero is dropped, `-0` included, so `double x = -0;` reads back as `double x;`. Inside any other
+  default a negative zero is kept as written, and gives its structure another identity than
+  `0` would: `vec<double, 2> x = {1.0, -0.0};` and `{1.0, 0.0}` are two structures. A negative
+  too small for the kept decimals is such a zero (`-1e-20` is kept as `-0.000000000000000`).
+  Write `0`.
+- **A non-finite value inside a default.** DSM text has no literal for NaN or an infinity, and
+  an API refuses one as a scalar default, but accepts it inside a `vec`, a `tuple` or another
+  composite default, whose text form then does not parse.
+
 ## What is not governed here
 
 - **A name a programming language reserves.** It is the code generator's to spell, rename

@@ -17,6 +17,8 @@ producers emit or what consumers must accept are tracked here.
   built-in type, names are unique where they meet, documentation is UTF-8 without `"""`.
   No rule depends on a programming language: a name a target language reserves is the code
   generator's to handle.
+- `spec/dsm-governance.md` lists its known limitations: a float default kept at fixed
+  decimals, a negative zero in a default, a non-finite value inside a composite default.
 
 ### Changed
 - `grammar/DSM.g4` follows the reference implementation's docstring: raw text, so a `"` or a
